@@ -1,0 +1,29 @@
+﻿@model HelmesTechnicalAssignment.Models.TerozaursExample
+@{
+    ViewData["Title"] = "Home Page";
+    var inputResult = (List<TerozaursExample>)ViewBag.Result;
+    var input = ViewBag.Input;
+}
+
+<div class="container">
+  <div class="center">
+      <label>Get examples for the word</label>
+      <input id="inputText" placeholder="word or fraze"/>
+      <button onclick="getData()">Submit</button>
+      <p></p>
+      <div>
+        @if(input != null && inputResult != null)
+        {
+            <text>Result for word <strong>"@input"</strong><br />Total results @inputResult.Count</text>
+            <p></p>
+                @foreach(var example in inputResult)
+                {
+                    <p>
+                        <strong>Reference: </strong>@example.Reference <br>
+                        <strong>Example: </strong>@example.Example
+                    </p>
+                }
+        }
+      </div>
+  </div>
+</div>
